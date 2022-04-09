@@ -53,7 +53,7 @@ def const(answer, current):
         return output
 
 #This function is for when a participant wants to guess a consonant
-def Vowel(answer, current):
+def vowel(answer, current):
     x = 0
     count = 0
     vowels = ['a','e','i','o','u']
@@ -77,3 +77,27 @@ def Vowel(answer, current):
                 x = x + 1
         output = [count, current]
         return output
+
+#This function will be used for the first two rounds of the game, and utilized previous functions
+def round():
+    answer = getword()
+    current = []
+    for i in answer:
+        current.append('_')
+    print('Current Puzzle is ' + str(current))
+    money = {'player1' : 0, 'player2' : 0, 'player3' : 0}
+    round = 0
+    players = ['player1','player2','player3']
+    p = 2
+    currentplayer = players[p]
+    while round == 0:
+        turn = 0
+        if currentplayer == players[2]:
+            currentplayer = players[0]
+        else:
+            p = p + 1
+            currentplayer = players[p]
+        print('Current turn is for ' + currentplayer + ', Who has ' + str(money[currentplayer]) + ' dollars, current solve is ' + str(current))  
+        round = 1
+    
+round()
