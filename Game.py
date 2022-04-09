@@ -2,6 +2,7 @@ from random import Random
 
 
 import random
+from re import X
 
 #This Function gets a random word from a text file. It takes no inputs and returns a random word from Words.txt
 def getword():
@@ -14,7 +15,7 @@ def getword():
 
 #This function gets a user's guess and checks if a solve is correct. It takes the answer as input and returns a 1 or 0 for correct or wrong.
 def solve(answer):
-    guess = input('Enter your solve guess ').lower()
+    guess = input('Enter your solve guess :').lower()
     if guess == answer:
         return 1
     else:
@@ -31,7 +32,7 @@ def const(answer, current):
     x = 0
     count = 0
     vowels = ['a','e','i','o','u']
-    guess = input('Enter your consonant guess ').lower()
+    guess = input('Enter your consonant guess :').lower()
     if guess in vowels:
         output = [-1, current]
         return output
@@ -60,7 +61,7 @@ def vowel(answer, current):
     x = 0
     count = 0
     vowels = ['a','e','i','o','u']
-    guess = input('Enter your vowel guess ').lower()
+    guess = input('Enter your vowel guess :').lower()
     if guess not in vowels:
         output = [-1, current]
         return output
@@ -103,7 +104,7 @@ def round():
             p = 0
         while turn == 0: 
             print('Current turn is for ' + currentplayer + ', Who has ' + str(money[currentplayer]) + ' dollars, current solve is ' + str(current)) #turn information
-            choice = input('please enter spin, vowel, or solve ').lower()
+            choice = input('please enter spin, vowel, or solve :').lower()
             options = ['vowel','spin','solve']
             if choice not in options:
                 print('invalid input try again')
@@ -173,8 +174,29 @@ def checkletter(p, answer, current):
             x = x + 1
     return current
 
+def validletter(letter):
+    consonants = ['b','c','d','f','g','h','j','k','p','m','q','v,','w','x','y','z'] #to check input 
+    validinput = 0
+    while validinput == 0:
+        if letter in consonants:
+            validinput = 1
+        else:
+            print('That letter is in rstle, or is not valid, please try again')
+            letter = input('please enter a consonant :').lower()
+
+def validvowel(vowel):
+    vowels = ['a','i','o','u'] #to check input 
+    validinput = 0
+    while validinput == 0:
+        if vowel in vowels:
+            validinput = 1
+        else:
+            print('That letter is in rstle, or is not valid, please try again')
+            vowel = input('please enter a consonant :').lower()
+
 def finalround():
     answer = getword()
+    #print(answer) #Testing print. Uncomment to cheat
     current = []
     for i in answer:
         current.append('_')
@@ -184,7 +206,27 @@ def finalround():
     current = checkletter('l', answer, current)
     current = checkletter('n', answer, current)
     current = checkletter('e', answer, current)
-    print(answer)
+    print('current board is ' + str(current))
+    letter = input('please enter a consonant :').lower()
+    validletter(letter)
+    current = checkletter(letter, answer, current)
+    letter = input('please enter a consonant :').lower()
+    validletter(letter)
+    current = checkletter(letter, answer, current)
+    letter = input('please enter a consonant :').lower()
+    validletter(letter)
+    current = checkletter(letter, answer, current)
+    vowel = input('please enter a vowel :').lower()
+    validvowel(vowel)
+    current = checkletter(vowel, answer, current)
     print(str(current))
-
+    print('You have one guess to solve this, good luck')
+    correct = solve(answer)
+    if correct == 1:
+        print('Congradulations!!!! You win $10,000!!!!!')
+        return 10,000
+    else:
+        print('We are sorry but that was not it. the answer was ' + answer)
+        print('You still win everything you won in rounds 1 and 2')
+        return 0
 
