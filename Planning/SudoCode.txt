@@ -1,0 +1,184 @@
+def get_word()
+	Read word.txt and get word
+	return random word
+
+def. solve(answer)
+	If user input == answer
+		return 1
+	else 
+		return 0
+
+
+def. spin()
+	wheel = [money and backruptcy array]
+	value = random choice from money
+	return value (it's a number or backruptcy)
+
+Comment: In the code, I decided to add vowel and consonant functions to simplify the round function below
+
+def round()
+	Print("Here we start a 3 player round!")
+	Answer = get_word()
+	Current = []
+	For i in Answer:
+		Current.ammend('_')
+	Print('Current Puzzle is ' + str(Current)')
+	money = {player1: 0, player2: 0, player3: 0}
+	Round = 0
+	CurrentPlayer = -1
+	While Round == 0
+		Turn = 0
+		If CurrentPlayer = 2
+			CurrentPlayer = 0
+		Else
+			CurrentPlayer = CurrentPlayer + 1
+		Print('Current turn is for ' + str(money[CurrentPlayer] + ', Who has ' + str(money[CurrentPlayer][
+		Prtin('Current solution is ' + str(current))
+		While Turn = 0
+			user input = please pick spin, vowel, or solve
+			if solve:
+				correct = solve(answer)
+				if correct == 1
+					print('You got it! this round it over, answer was ' + Answer)
+					Turn = Turn + 1
+					Round = Round + 1
+				else:
+					print('That's not it, next player')
+					Turn = Turn + 1
+			else if vowel:
+				if money[current player] < 250
+					print('Error, you don't have enough money, try again')
+				else:
+					money[current player] = money [current player] - 250
+					vowel (user input) = which vowel would you like?
+					Count = 0
+					for i in answer:
+						if answer[i] == vowel:
+							current[i] = vowel 
+							count = count + 1
+					if count == 0
+						print('Sorry, that vowel is not in the word, Next player')
+						Turn = 1
+					else:
+						print('Correct! You get another turn!')
+						CurrentPlayer = CurrentPlayer - 1
+						Turn = 1
+			else:
+				spin = spin()
+				if spin == backruptcy:
+					print('Sorry, you lose all money this round, and your turn')
+					money[CurrentPlayer] = 0
+					turn = turn + 1
+				else:
+					print('You spun ' + str(money))
+					Const = user input ('Please pick a constanant')
+					for i in answer:
+						if answer[i] == Const:
+							current[i] = Const
+							count = count + 1
+					if count == 0
+						print('Sorry, that constanant is not in the word, Next player')
+						Turn = 1
+					else:
+						print('Correct! You get another turn!')
+						money[CurrentPlayer] = Money[CurrentPlayer] + Count * spin
+						print('You have earned ' + str(Count * spin) + ' Dollars')
+						CurrentPlayer = CurrentPlayer - 1
+						Turn = 1
+						if Current == Answer
+							print('That was the last letter, the Round is over')
+							Round = Round + 1
+
+
+
+def checkletter(p, answer, current)
+	x = 0
+	while x < length of answer
+		if answer[x] == p
+			current[x] == p
+			x = x + 1
+		else
+			x = x + 1
+	return current
+
+def validletter(letter)
+    consonants = letters 
+    validinput = 0
+    while validinput == 0
+        if letter in consonants
+            validinput = 1
+        else
+            print('That letter is in rstle, or is not valid, please try again')
+            letter = input please enter a consonant 
+
+def validvowel(vowel)
+    vowels = a  i o u #to check input 
+    validinput = 0
+    while validinput == 0
+        if vowel in vowels
+            validinput = 1
+        else
+            print('That letter is in rstle, or is not valid, please try again')
+            vowel = input please enter a consonant 
+
+
+def finalround()
+    answer = getword()
+    current = []
+    for i in answer:
+        current append '_'
+    current = checkletter('r', answer, current)  
+    current = checkletter('s', answer, current)
+    current = checkletter('t', answer, current)
+    current = checkletter('l', answer, current)
+    current = checkletter('n', answer, current)
+    current = checkletter('e', answer, current)
+    print('current board after RSTLNE is ' + (current))
+    letter = input please enter a consonant 
+    validletter(letter)
+    current = checkletter(letter, answer, current)
+    letter = input please enter a consonant 
+    validletter(letter)
+    current = checkletter(letter, answer, current)
+    letter = input please enter a consonant 
+    validletter(letter)
+    current = checkletter(letter, answer, current)
+    vowel = input please enter a vowel 
+    validvowel(vowel)
+    current = checkletter(vowel, answer, current)
+    print(current)
+    print You have one guess to solve this, good luck
+    correct = solve(answer)
+    if correct == 1
+        print Congradulations!!!! You win $10,000!!!!!
+        return 10000
+    else:
+        print('We are sorry but that was not it. the answer was ' + answer)
+        print('You still win everything you won in rounds 1 and 2')
+        return 0
+
+def wheeloffortune():
+    print Welcome to wheel of fortune! I am your host Ryan, and we will soon be starting our first 3 player round
+    money1 = round()
+    print That was round one, current money totals are:
+    print(money1)
+    print We now begin round 2!
+    money2 = round()
+    player1 = money1['player1'] + money2['player1']
+    player2 = money1['player2'] + money2['player2']
+    player3 = money1['player3'] + money2['player3']
+    finalmoney = {'player1':player1,'player2':player2,'player3':player3}
+    print Totals after round2 are
+    print(finalmoney)
+    winnings = max(player1, player2, player3)
+    keys = list(finalmoney.keys())
+    values = list(finalmoney.values())
+    position = values.index(winnings)
+    winner = keys[position]
+    print The winner is + winner + !!! Congradulations!! You made it to the final round, you have won + (winnings) +  so far)
+    newmoney = finalround()
+    final = newmoney + winnings
+    print Congradulations  + winner + , you have won $ + (final)
+
+
+

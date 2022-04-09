@@ -1,0 +1,42 @@
+RULES:
+
+Round 1
+
+A random word is assignment
+
+1. Player one goes first, all players start with zero money
+2. Player can spin the wheel, solve, or buy a vowel
+3. If they buy a vowel, they lose $250, if they are correct back to step two, if they are wrong next player
+4. If they spin the wheel, a value is randomly selected from the wheel array
+4a. If it is backruptcy, their current round money is set to 0, next player
+4b. If it is money, they select a constanent. 
+4b. 1. If it is on the board, the get the amount of money * the number of times it's on the board
+4b. 2. Else, next player
+5. If they solve, player guesses the puzzle. If they are correct, round ends.
+5b. If they are wrong, Next player
+
+This continues until the round ends, and once it does, the next round starts.
+
+Round 2 is identical to round 1 
+money is totaled for round 1 and 2 and the end of round 2, and the player
+with the highest total wins, and gets to play the final round
+
+In the final round, a new random word is chosen
+RSTLNE are filled in
+Player gets to see the board with those letters
+Player guesses 3 consonants and 1 vowel
+Player gets 1 guess to solve the puzzle
+If they win, they get 10,000 from this ronund
+If they lose, they get 0 from this round
+
+
+						
+
+					
+
+
+				
+
+		
+	
+	
