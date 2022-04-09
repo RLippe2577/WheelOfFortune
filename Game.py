@@ -189,7 +189,7 @@ def validvowel(vowel):
             validinput = 1
         else:
             print('That letter is in rstle, or is not valid, please try again')
-            vowel = input('please enter a consonant :').lower()
+            vowel = input('please enter a vowel :').lower()
 
 def finalround():
     answer = getword()
