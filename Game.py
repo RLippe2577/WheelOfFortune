@@ -1,8 +1,5 @@
-from random import Random
-
-
 import random
-from re import X
+
 
 #This Function gets a random word from a text file. It takes no inputs and returns a random word from Words.txt
 def getword():
@@ -86,7 +83,7 @@ def vowel(answer, current):
 #It will be run twice. It takes no input, and will return money dictionary to be used in the game function at the end
 def round():
     answer = getword()
-    print(answer) #For testing purposes, uncomment to cheat as player1
+    #print(answer) #For testing purposes, uncomment to cheat as player1
     current = []
     for i in answer:
         current.append('_')
@@ -206,7 +203,7 @@ def finalround():
     current = checkletter('l', answer, current)
     current = checkletter('n', answer, current)
     current = checkletter('e', answer, current)
-    print('current board is ' + str(current))
+    print('current board after RSTLNE is ' + str(current))
     letter = input('please enter a consonant :').lower()
     validletter(letter)
     current = checkletter(letter, answer, current)
@@ -224,9 +221,36 @@ def finalround():
     correct = solve(answer)
     if correct == 1:
         print('Congradulations!!!! You win $10,000!!!!!')
-        return 10,000
+        return 10000
     else:
         print('We are sorry but that was not it. the answer was ' + answer)
         print('You still win everything you won in rounds 1 and 2')
         return 0
 
+def wheeloffortune():
+    print('Welcome to wheel of fortune! I am your host Ryan, and we will soon be starting our first 3 player round')
+    money1 = round()
+    print('That was round one, current money totals are:')
+    print(money1)
+    print('We now begin round 2!')
+    money2 = round()
+    player1 = money1['player1'] + money2['player1']
+    player2 = money1['player2'] + money2['player2']
+    player3 = money1['player3'] + money2['player3']
+    finalmoney = {'player1':player1,'player2':player2,'player3':player3}
+    print('Totals after round2 are')
+    print(finalmoney)
+    winnings = max(player1, player2, player3)
+    keys = list(finalmoney.keys())
+    values = list(finalmoney.values())
+    position = values.index(winnings)
+    winner = keys[position]
+    print('The winner is : ' + winner + '!!! Congradulations!! You made it to the final round, you have won ' + str(winnings) + ' so far')
+    newmoney = finalround()
+    final = newmoney + winnings
+    print('Congradulations ' + winner + ', you have won $' + str(final) )
+
+
+wheeloffortune()
+    
+    
