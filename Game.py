@@ -162,3 +162,29 @@ def round():
                             turn = turn + 1
                             round = round + 1
     return money
+
+def checkletter(p, answer, current):
+    x = 0
+    while x < len(answer):
+        if answer[x] == p:
+            current[x] = p
+            x = x + 1
+        else: 
+            x = x + 1
+    return current
+
+def finalround():
+    answer = getword()
+    current = []
+    for i in answer:
+        current.append('_')
+    current = checkletter('r', answer, current) #RSTLNE 
+    current = checkletter('s', answer, current)
+    current = checkletter('t', answer, current)
+    current = checkletter('l', answer, current)
+    current = checkletter('n', answer, current)
+    current = checkletter('e', answer, current)
+    print(answer)
+    print(str(current))
+
+
