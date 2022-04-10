@@ -3,4 +3,4 @@ This repository contains python script that tries to reproduce a three person, 2
 Included is:
 A planning folder with rules and sudo code
 A text document with words to choose from
-A python file with the function game
+A python file with the functioning game
