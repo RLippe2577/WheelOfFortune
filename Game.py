@@ -164,32 +164,40 @@ def round():
 def checkletter(p, answer, current):
     x = 0
     while x < len(answer):
-        if answer[x] == p:
-            current[x] = p
-            x = x + 1
-        else: 
-            x = x + 1
+        y = 0
+        while y < len(p):
+            if answer[x] == p[y]:
+                current[x] = p[y]
+                y = y + 1
+            else: 
+                y = y + 1
+        x = x + 1
+    print(str(current))
     return current
 
-def validletter(letter):
+def validletter():
     consonants = ['b','c','d','f','g','h','j','k','p','m','q','v,','w','x','y','z'] #to check input 
     validinput = 0
+    letter = input('please enter a consonant :').lower()
     while validinput == 0:
         if letter in consonants:
             validinput = 1
         else:
             print('That letter is in rstle, or is not valid, please try again')
             letter = input('please enter a consonant :').lower()
+    return letter
 
-def validvowel(vowel):
+def validvowel():
     vowels = ['a','i','o','u'] #to check input 
     validinput = 0
+    vowel = input('please enter a vowel :').lower()
     while validinput == 0:
         if vowel in vowels:
             validinput = 1
         else:
             print('That letter is in rstle, or is not valid, please try again')
             vowel = input('please enter a vowel :').lower()
+    return vowel
 
 def finalround():
     answer = getword()
@@ -197,24 +205,15 @@ def finalround():
     current = []
     for i in answer:
         current.append('_')
-    current = checkletter('r', answer, current) #RSTLNE 
-    current = checkletter('s', answer, current)
-    current = checkletter('t', answer, current)
-    current = checkletter('l', answer, current)
-    current = checkletter('n', answer, current)
-    current = checkletter('e', answer, current)
+    current = checkletter(['r','s','t','l','n','e'], answer, current) #RSTLNE 
     print('current board after RSTLNE is ' + str(current))
-    letter = input('please enter a consonant :').lower()
-    validletter(letter)
+    letter = validletter() #Gets Letter 
     current = checkletter(letter, answer, current)
-    letter = input('please enter a consonant :').lower()
-    validletter(letter)
+    letter = validletter() #Gets Letter
     current = checkletter(letter, answer, current)
-    letter = input('please enter a consonant :').lower()
-    validletter(letter)
+    letter = validletter() #Gets Letter
     current = checkletter(letter, answer, current)
-    vowel = input('please enter a vowel :').lower()
-    validvowel(vowel)
+    vowel = validvowel() #Gets Vowel
     current = checkletter(vowel, answer, current)
     print(str(current))
     print('You have one guess to solve this, good luck')
@@ -234,17 +233,17 @@ def wheeloffortune():
     print(money1)
     print('We now begin round 2!')
     money2 = round()
-    player1 = money1['player1'] + money2['player1']
+    player1 = money1['player1'] + money2['player1'] #Sum for each player
     player2 = money1['player2'] + money2['player2']
     player3 = money1['player3'] + money2['player3']
-    finalmoney = {'player1':player1,'player2':player2,'player3':player3}
+    finalmoney = {'player1':player1,'player2':player2,'player3':player3} #Money totals
     print('Totals after round2 are')
     print(finalmoney)
-    winnings = max(player1, player2, player3)
+    winnings = max(player1, player2, player3) #Money value of winner
     keys = list(finalmoney.keys())
     values = list(finalmoney.values())
-    position = values.index(winnings)
-    winner = keys[position]
+    position = values.index(winnings) #Position of Winner
+    winner = keys[position] 
     print('The winner is : ' + winner + '!!! Congradulations!! You made it to the final round, you have won ' + str(winnings) + ' so far')
     newmoney = finalround()
     final = newmoney + winnings
@@ -252,5 +251,5 @@ def wheeloffortune():
 
 
 wheeloffortune()
-    
+
     
