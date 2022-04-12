@@ -1,6 +1,6 @@
 This repository contains python script that tries to reproduce a three person, 3 round game of wheel of fortune
 
-To run: Chance filepath for words.txt in get_word to your local filepath, then click run.
+To run: In Game.py, Change filepath for words.txt in get_word to your local filepath, then click run.
 
 Included is:
 A planning folder with rules and sudo code
