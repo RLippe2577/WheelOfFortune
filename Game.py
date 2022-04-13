@@ -87,7 +87,7 @@ def round():
     current = []
     for i in answer:
         current.append('_')
-    print('Current Puzzle is ' + str(current)) #This tells the players how long the puzzle is
+    print('Current Puzzle is ' + (' '.join(current))) #This tells the players how long the puzzle is
     money = {'player1' : 0, 'player2' : 0, 'player3' : 0}
     round = 0
     players = ['player1','player2','player3','extra'] #The extra slot in the array allows me to check if I've gone out of index and cycle to player 1
@@ -100,7 +100,7 @@ def round():
             currentplayer = players[0]
             p = 0
         while turn == 0: 
-            print('Current turn is for ' + currentplayer + ', Who has ' + str(money[currentplayer]) + ' dollars, current solve is ' + str(current)) #turn information
+            print('Current turn is for ' + currentplayer + ', Who has ' + str(money[currentplayer]) + ' dollars, current solve is ' + (' '.join(current))) #turn information
             choice = input('please enter spin, vowel, or solve :').lower()
             options = ['vowel','spin','solve']
             if choice not in options:
@@ -132,6 +132,10 @@ def round():
                     else:
                         current = output[1]
                         print('Correct! there are ' + str(output[0]) + ' of those, you get another turn')
+                        if '_' not in current:
+                            print('That was the last letter, the round is over!') 
+                            turn = turn + 1
+                            round = round + 1
             else:
                 spin = wheel()
                 if spin == 'bankrupt':
@@ -172,7 +176,6 @@ def checkletter(p, answer, current):
             else: 
                 y = y + 1
         x = x + 1
-    print(str(current))
     return current
 
 def validletter():
@@ -206,7 +209,7 @@ def finalround():
     for i in answer:
         current.append('_')
     current = checkletter(['r','s','t','l','n','e'], answer, current) #RSTLNE 
-    print('current board after RSTLNE is ' + str(current))
+    print('This is the current board after RSTLNE  ' + (' '.join(current)))
     letter = validletter() #Gets Letter 
     current = checkletter(letter, answer, current)
     letter = validletter() #Gets Letter
@@ -215,7 +218,7 @@ def finalround():
     current = checkletter(letter, answer, current)
     vowel = validvowel() #Gets Vowel
     current = checkletter(vowel, answer, current)
-    print(str(current))
+    print((' '.join(current)))
     print('You have one guess to solve this, good luck')
     correct = solve(answer)
     if correct == 1:
